@@ -1,0 +1,21 @@
+
+
+This is a fork of Debian's version of `urlview`...
+
+    https://salsa.debian.org/debian/urlview
+
+...which I patched with a commit from a different version...
+
+    https://github.com/sigpipe/urlview/commit/a9e1d573f301e39df4fbe77d2ee8896eeb90c692
+
+...so that it exits after it launches the first link.
+
+It's built in its own little docker container, and the binary
+and deb package are copied out.
+
+Like so...
+
+    $ make image
+    $ make copies
+
+
