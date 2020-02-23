@@ -15,3 +15,7 @@ RUN cat /thepatch.diff | patch -p1
 RUN dch -n "Apply thepatch."
 
 RUN debuild -us -uc
+
+# Wrap up in a tar so we don't need to care exactly which version is
+# used in the filename:
+RUN cd / && tar cf out.tar *.deb

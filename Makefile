@@ -8,6 +8,7 @@ explore:
 copies: image
 	container=$$(docker create build-urlview) \
 	&& docker cp $$container:/urlview-0.9/urlview . \
-	&& docker cp $$container:/urlview_0.9-20.1_amd64.deb . \
+	&& docker cp $$container:out.tar . \
+	&& tar xf out.tar \
+	&& rm out.tar \
 	&& docker rm -v $$container
-
