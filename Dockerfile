@@ -1,5 +1,6 @@
 
-FROM ubuntu:16.04
+ARG RELEASE
+FROM ubuntu:${RELEASE}
 
 RUN sed -i 's/# deb-src /deb-src /' /etc/apt/sources.list \
  && apt-get update \

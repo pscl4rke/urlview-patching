@@ -1,6 +1,10 @@
 
+export RELEASE = 16.04
+#export RELEASE = 19.10
+
 image:
-	docker build -t build-urlview .
+	@echo Building urlview for "'"$$RELEASE"'"...
+	docker build --build-arg RELEASE -t build-urlview .
 
 explore:
 	docker run --rm -it build-urlview
