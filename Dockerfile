@@ -4,6 +4,7 @@ FROM ubuntu:${RELEASE}
 
 RUN sed -i 's/# deb-src /deb-src /' /etc/apt/sources.list \
  && apt-get update \
+ && apt-get install -y tzdata \
  && apt-get install -y devscripts build-essential gcc fakeroot --no-install-recommends \
  && apt-get install -y dpkg-dev --no-install-recommends \
  && apt-get source urlview \
