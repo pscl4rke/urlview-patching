@@ -1,6 +1,7 @@
 
-export RELEASE = 16.04
+#export RELEASE = 16.04
 #export RELEASE = 19.10
+export RELEASE = 20.04
 
 image:
 	@echo Building urlview for "'"$$RELEASE"'"...
