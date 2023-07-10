@@ -11,6 +11,10 @@ RUN sed -i 's/# deb-src /deb-src /' /etc/apt/sources.list \
  && apt-get build-dep -y urlview --no-install-recommends
 
 WORKDIR urlview-0.9
+RUN sed -i 's|Package: urlview|Package: urlview-patched|' debian/control \
+ && sed -i '/Depends:/ a Provides: urlview' debian/control \
+ && cat debian/control \
+ && sed -i 's|debian/urlview/|debian/urlview-patched/|g' debian/rules
 
 COPY thepatch.diff /thepatch.diff
 RUN cat /thepatch.diff | patch -p1

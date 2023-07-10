@@ -18,4 +18,8 @@ Like so...
     $ make image
     $ make copies
 
+Originally it build a `urlview` package.  But now the
+package it creates is called `urlview-patched` to avoid
+some clashing problems I had.  It `Provides:` the original
+package, which should ease installation.
 
