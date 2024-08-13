@@ -12,9 +12,11 @@ RUN sed -i 's/# deb-src /deb-src /' /etc/apt/sources.list \
 
 WORKDIR urlview-0.9
 RUN sed -i 's|Package: urlview|Package: urlview-patched|' debian/control \
- && sed -i '/Depends:/ a Provides: urlview' debian/control \
+ && sed -i '/^Depends:/ a Provides: urlview' debian/control \
+ && sed -i '/^Depends:/ a Conflicts: urlview' debian/control \
+ && sed -i 's|debian/urlview/|debian/urlview-patched/|g' debian/rules \
  && cat debian/control \
- && sed -i 's|debian/urlview/|debian/urlview-patched/|g' debian/rules
+ && dch -n "Fix Metadata."
 
 COPY thepatch.diff /thepatch.diff
 RUN cat /thepatch.diff | patch -p1
