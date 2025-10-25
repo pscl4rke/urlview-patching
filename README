@@ -8,9 +8,12 @@ This is a fork of Debian's version of `urlview`...
 
     https://github.com/sigpipe/urlview/commit/a9e1d573f301e39df4fbe77d2ee8896eeb90c692
 
-...so that it exits after it launches the first link.
+...so that when QUITONLAUNCH is set in the config file it exits
+after it launches the first link.
 
-It's built in its own little docker container, and the binary
+----
+
+It's built in its own little container, and the binary
 and deb package are copied out.
 
 Like so...
@@ -18,8 +21,17 @@ Like so...
     $ make image
     $ make copies
 
-Originally it build a `urlview` package.  But now the
+Originally it built a `urlview` package.  But now the
 package it creates is called `urlview-patched` to avoid
 some clashing problems I had.  It `Provides:` the original
 package, which should ease installation.
+
+----
+
+As of 2024 someone else has restarted activity and merged in
+lots of other patches...
+
+    https://git.sr.ht/~nabijaczleweli/urlview-ng
+
+...but as of 2025 they hadn't added QUITONLAUNCH support.
 
